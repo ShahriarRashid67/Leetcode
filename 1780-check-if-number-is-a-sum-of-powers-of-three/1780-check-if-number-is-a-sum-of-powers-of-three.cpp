@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool checkPowersOfThree(int n) {
-        int mx =(1<<16);
+        int mx =(1<<15);
         for(int mask=0;mask<mx;mask++){
             int tmpSum=0;
             for(int i=0;i<16;i++){
