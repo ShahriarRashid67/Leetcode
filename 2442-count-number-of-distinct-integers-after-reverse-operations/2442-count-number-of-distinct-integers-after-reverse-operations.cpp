@@ -11,7 +11,7 @@ public:
         return x;
     }
     int countDistinctIntegers(vector<int>& nums) {
-         map<int,int>mp;
+         unordered_map<int,int>mp;
         for(auto x: nums){
             mp[x]++;
             mp[pali(x)]++;
