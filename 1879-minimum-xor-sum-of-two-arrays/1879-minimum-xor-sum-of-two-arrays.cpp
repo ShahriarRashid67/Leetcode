@@ -17,12 +17,12 @@ public:
         }
         return dp[r][c]=ans;
     }
-    int minimumXORSum(vector<int>& a, vector<int>& b) {
-        int n=a.size();
+    int minimumXORSum(vector<int>&nums1, vector<int>& nums2) {
+        int n=nums1.size();
         vector<vector<int>> x(n , vector<int> (n));
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
-                x[i][j]=a[i]^b[j];
+                x[i][j]=nums1[i]^nums2[j];
             }
         }
         int c = pow(2, n)-1;
