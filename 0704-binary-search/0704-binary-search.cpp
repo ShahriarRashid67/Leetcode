@@ -11,7 +11,7 @@ public:
             if(nums[md]<target){
                 l=md+1;
             }else{
-            r=md-1;
+                r=md-1;
             }
         }
         
