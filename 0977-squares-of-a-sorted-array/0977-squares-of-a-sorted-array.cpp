@@ -1,20 +1,19 @@
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& nums) {
-        map<int,int>mp;
-        for(auto x:nums){
-            if(x<0)x*=-1;
-            mp[x]++;
-        }
+        int L=0,R=nums.size()-1;
         vector<int>ans;
-        for(auto x:mp){
-            cout<<x.first<<" ";
-            int cnt=x.second;
-            int val=x.first*x.first;
-            while(cnt--){
-                ans.push_back(val);
-            }
+        while(L<=R){
+            if(abs(nums[L])>=abs(nums[R])){
+                ans.push_back(nums[L]*nums[L]);
+                L++;
+            }else{
+                 ans.push_back(nums[R]*nums[R]);
+                R--;
+                
+            }   
         }
+        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
