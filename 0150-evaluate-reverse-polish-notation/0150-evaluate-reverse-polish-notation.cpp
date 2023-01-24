@@ -1,24 +1,22 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        
-        stack<int>myStack;
-        int a1, a2, a3=0;
-        for(int i = 0;i<tokens.size();i++){
-            
-            if( isSymbol(tokens[i])) {  //if symbol, pop from stack and do math
-                 a1 = myStack.top(); myStack.pop();
-                 a2 = myStack.top();myStack.pop();
-                 a3 = applyMath(tokens[i][0],a2, a1);
-                 myStack.push(a3);
-            } else {
-                a3 = stoi(tokens[i]);
-                myStack.push(a3);
-            }
+       stack<int>stk;
+        int box1,box2,box3;
+    for(int i=0;i<tokens.size();i++){
+        if(isSymbol(tokens[i])){
+            box1=stk.top();stk.pop();
+            box2=stk.top();stk.pop();
+            box3=applyMath(tokens[i][0],box2,box1);
+            stk.push(box3);
+        }else{
+            box3=stoi(tokens[i]);
+            stk.push(box3);
         }
-        return a3;
     }
-    int applyMath( char symbol, int a1, int a2){
+      return box3;
+    }
+     int applyMath( char symbol, int a1, int a2){
         int a3 = 0;
         switch (symbol){
             case '+': a3 = a1+a2; break;
@@ -29,13 +27,8 @@ public:
         }
         return a3;
     }
-    bool isSymbol(string ch) {
-        if((ch.length() <= 1) && (ch[0] == '+' || ch[0] == '*' || ch[0] == '/' || ch[0] == '-')){
-           return true;
-        }
-           else {
-           return false;
-        }
+    bool isSymbol(string s){
+        char c =s[0];
+        return((s.size()<=1) && (c=='+'|| c=='-'|| c=='/' || c=='*'));
     }
-        
 };
