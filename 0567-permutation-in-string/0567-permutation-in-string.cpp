@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool vcChecker(vector<int>a,vector<int>b){
+    bool vcChecker(vector<int>&a,vector<int>&b){
         for(int i=0;i<26;i++){
             if(a[i]!=b[i]){
             return 0;
