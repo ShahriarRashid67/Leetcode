@@ -1,15 +1,28 @@
 class Solution {
 public:
-    int fun(int row,int col,vector<vector<int>>&triangle , vector<vector<int>>&dp){
-        if(row==triangle.size()-1) return triangle[row][col];
-        int &res=dp[row][col];
-        if(res!=-1) return res;
-        res=triangle[row][col]+(min(fun(row+1,col,triangle,dp),fun(row+1,col+1,triangle,dp)));
-        return res;
-        }
+    
     int minimumTotal(vector<vector<int>>& triangle) {
-        int n=triangle.size();
-        vector<vector<int>>dp(n,vector<int>(n,-1));
-        return fun(0,0,triangle,dp);
+       int n = triangle.size();
+        int minSum = INT_MAX;
+
+        vector<int> prev(n, 0), curr(n, 0);
+        for(int i = 0; i<n; i++){
+            int m = triangle[i].size();
+            for(int j = 0; j<m; j++){
+                curr[j] = triangle[i][j];
+                if(j == 0)
+                    curr[j] += prev[j];
+                else if(j == m-1)
+                    curr[j] += prev[j-1];
+                else
+                    curr[j] += min(prev[j], prev[j-1]);
+
+                if(i == n-1)
+                    minSum = min(minSum, curr[j]);
+            }
+            prev = curr;
+        }
+        
+        return minSum;
     }
 };
