@@ -1,6 +1,6 @@
 class Solution {
 public:
-    double slope(int x1,int y1,int x2,int y2){
+    double slope(int &x1,int &y1,int &x2,int &y2){
         double ans=(y2-y1)*1.00/(x2-x1)*1.00;
         return ans;
     }
