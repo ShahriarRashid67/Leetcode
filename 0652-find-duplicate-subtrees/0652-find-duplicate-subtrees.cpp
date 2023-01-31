@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    unordered_map<string,int>mp;
+    map<string,int>mp;
     string hashGen(TreeNode *root,vector<TreeNode*>&ans){
         if(root==NULL) return "#";
         string gen=to_string(root->val)+','+hashGen(root->left,ans)+','+hashGen(root->right,ans);
