@@ -49,7 +49,7 @@ public:
         if(carry!=0){
               mult+=to_string(carry);
         }
-        cout<<mult;
+      //  cout<<mult;
         reverse(mult.begin(),mult.end());
         return mult;
     }
