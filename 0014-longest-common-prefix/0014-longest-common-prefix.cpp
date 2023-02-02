@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string matcher(string s,string t){
+   string matcher(string &s,string &t){
         string tmp="";
         for(int i=0;i<min(t.size(),s.size());i++){
             if(t[i]!=s[i]){
