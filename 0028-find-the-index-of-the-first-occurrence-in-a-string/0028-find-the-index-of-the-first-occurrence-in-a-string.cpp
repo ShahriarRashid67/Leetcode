@@ -8,10 +8,8 @@ public:
             }else{
                 i-=j;
                 j=0;
-                //if(haystack[i]==needle[j]) j++;
-            }
+           }
             
-            cout<<j<<" ";
             if(j==needle.size()){
                 return i-j+1;
             }
