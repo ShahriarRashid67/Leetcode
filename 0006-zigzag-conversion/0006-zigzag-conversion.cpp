@@ -2,28 +2,20 @@ class Solution {
 public:
     string convert(string s, int numRows) {
         if(numRows==1) return s;
-        vector<string>vc(numRows);
-        int r=0;
-        int d=1;
-        int u=0;
+        vector<string>zig(numRows);
+        int dir=0;
+        int row=0;
         for(int i=0;i<s.size();i++){
-          vc[r].push_back(s[i]);
-          if(r==0){
-              d=1;
-          }
-          if(r==numRows-1){
-              d=0;
-          }
-          if(d==1){
-              r++;
-          }else{
-              r--;
-          }  
+            zig[row].push_back(s[i]);
+            if(row==numRows-1)dir=1;
+            if(row==0) dir=0;
+            if(dir) row--;
+            else row++;
         }
-        string ans;
-        for(auto x:vc){
-            ans+=x;
+        string zigzag="";
+        for(auto x:zig){
+            zigzag+=x;
         }
-        return ans;
+        return zigzag;
     }
 };
