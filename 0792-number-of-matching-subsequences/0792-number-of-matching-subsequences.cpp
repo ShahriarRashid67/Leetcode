@@ -16,12 +16,6 @@ public:
             int c=s[i]-'a';
             vc[c].push_back(i);
         }
-        // for(auto x:vc){
-        //     for(auto v:x){
-        //         cout<<v<<" ";
-        //     }
-        //     cout<<endl;
-        // }
         int ans=0;
         for(int i=0;i<words.size();i++){
             ans+=fun(words[i],vc);
