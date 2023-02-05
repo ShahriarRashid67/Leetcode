@@ -1,7 +1,7 @@
 class Solution {
 public:
     int longestPalindrome(vector<string>& words) {
-        map<pair<int,int>,int>mp;
+          map<pair<int,int> ,int>mp;
         for(auto x:words){
              mp[{x[0]-'a',x[1]-'a'}]++;
         }
@@ -15,14 +15,12 @@ public:
         }
         int mx=0;
         for(int i=0;i<27;i++){
-           if(mp[{i,i}]%2==0) {
-               ans+=mp[{i,i}];
-             }
-            else{
-             ans+=(mp[{i,i}])-1;
+            ans+=mp[{i,i}];
+            if(mp[{i,i}]%2==1){
+                ans--;
                 mx=1;
             }
-            
+           
         }
         return 2*(ans+mx);
     }
