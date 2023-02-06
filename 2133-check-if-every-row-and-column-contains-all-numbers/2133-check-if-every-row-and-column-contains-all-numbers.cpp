@@ -1,16 +1,14 @@
 class Solution {
 public:
-    bool checkValid(vector<vector<int>>& matrix) {
-        int n=matrix.size();
-        vector<unordered_set<int>>row(n),col(n);
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                int x=matrix[i][j];
-                if(row[i].count(x)|| col[j].count(x)) return 0;
-                row[i].insert(x);
-                col[j].insert(x);
-            }
-        }
-        return 1;
+    bool checkValid(vector<vector<int>>& m) {
+      int n = m.size();
+    for (int i = 0; i < m.size(); ++i) {
+        bitset<101> row, col;
+        for (int j = 0; j <  m.size(); ++j)
+            row[m[i][j]] = col[m[j][i]] = true;
+        if (min(row.count(), col.count()) <  m.size())
+            return false;
+    }
+    return true;
     }
 };
