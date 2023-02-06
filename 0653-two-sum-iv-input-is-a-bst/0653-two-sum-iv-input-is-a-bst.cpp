@@ -11,20 +11,20 @@
  */
 class Solution {
 public:
-    unordered_map<int,int>mp;
-    void fun(TreeNode* root,int k,int &ans){
-        if(root==NULL) return;
-        int rem=k-root->val;
-       // cout<<rem<<" "<<root->val<<endl;
-        if(mp[rem]==1){ ans=1;}
-        mp[root->val]=1;
-        fun(root->left,k,ans);
-        fun(root->right,k,ans);
-        return;
-    }
     bool findTarget(TreeNode* root, int k) {
-        int ans=0;
-        fun(root,k,ans);
-        return ans;
+        if(root==NULL) return 0;
+        unordered_set<int>seen;
+        stack<TreeNode*>st;
+        st.push(root);
+        while(!st.empty()){
+            auto tmp=st.top();
+            st.pop();
+            if(seen.count(k-(tmp->val))) return 1;
+            seen.insert(tmp->val);
+            
+            if(tmp->left) st.push(tmp->left);
+            if(tmp->right) st.push(tmp->right);
+        }
+        return 0;
     }
 };
