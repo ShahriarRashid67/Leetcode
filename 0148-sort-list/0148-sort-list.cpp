@@ -39,8 +39,8 @@ public:
             }
             curr=curr->next;
         }
-        if(l1!=NULL) curr->next=l1,l1=l1->next;
-        if(l2!=NULL) curr->next=l2,l2=l2->next;
+        if(l1!=NULL) curr->next=l1;
+        if(l2!=NULL) curr->next=l2;
         return head->next;
     }
 };
