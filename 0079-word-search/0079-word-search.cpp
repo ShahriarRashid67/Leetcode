@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dr[5]={0,1,0,-1,0};
+    const int dr[5]={0,1,0,-1,0};
     int m,n;
     bool searchNext(vector<vector<char>> &board, string &word, int row, int col, int index) 
     {
