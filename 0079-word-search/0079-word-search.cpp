@@ -1,7 +1,8 @@
 class Solution {
 public:
     int dr[5]={0,1,0,-1,0};
-    bool searchNext(vector<vector<char>> &board, string word, int row, int col, int index, int m, int n) 
+    int m,n;
+    bool searchNext(vector<vector<char>> &board, string &word, int row, int col, int index) 
     {
 
         if (index == word.length())
@@ -14,7 +15,7 @@ public:
         board[row][col] = '*';
         int ans=0;
        for(int i=0;i<4;i++){
-           ans|=searchNext(board,word,row+dr[i],col+dr[i+1],index+1,m,n);
+           ans|=searchNext(board,word,row+dr[i],col+dr[i+1],index+1);
        }
         board[row][col] = c; // undo change
 
@@ -23,8 +24,8 @@ public:
     bool exist(vector<vector<char>> board, string word) 
     {
 
-        int m = board.size();
-        int n = board[0].size();
+        m = board.size();
+        n = board[0].size();
 
         int index = 0;
 
@@ -34,7 +35,7 @@ public:
              {
                  if (board[i][j] == word[index]) 
                  {
-                    if (searchNext(board, word, i, j, index, m, n))
+                    if (searchNext(board, word, i, j, index))
                     {
                         return true;
                     }
