@@ -14,19 +14,20 @@ public:
         char c = board[row][col];
         board[row][col] = '*';
         int ans=0;
-       for(int i=0;i<4;i++){
+        for(int i=0;i<4;i++){
            ans|=searchNext(board,word,row+dr[i],col+dr[i+1],index+1);
-       }
+            if(ans==1){
+                board[row][col]=c;
+                return ans;
+            }
+        }
         board[row][col] = c; // undo change
-
         return ans;
     }
     bool exist(vector<vector<char>> board, string word) 
     {
-
         m = board.size();
         n = board[0].size();
-
         int index = 0;
 
         for (int i = 0; i < m; i++) 
