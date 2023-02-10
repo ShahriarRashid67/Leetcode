@@ -1,12 +1,12 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        vector<int>mp(130,0);
+        vector<int>mp(27,0);
         for(auto &c: s){
-            mp[c]++;
+            mp[c-'a']++;
         }
         for(int i=0;i<s.size();i++){
-            if(mp[s[i]]==1){
+            if(mp[s[i]-'a']==1){
                 return i;
             }
         }
