@@ -11,19 +11,17 @@
  */
 class Solution {
 public:
-    int inOrder(TreeNode* root,int &k){
-        if(root==NULL) return -1;
-        int ans=-1;
-        ans=max(ans,inOrder(root->left,k));
+    void finder(TreeNode * root,int &k,int &element){
+        if(root==NULL) return;
+        finder(root->left,k,element);
         k--;
-        cout<<root->val<<" ";
-        if(k==0){
-            ans=root->val;
-        }
-        ans= max(ans,inOrder(root->right,k));
-        return ans;
+        if(k==0) element=root->val;
+        finder(root->right,k,element);
+        return;
     }
     int kthSmallest(TreeNode* root, int k) {
-        return inOrder(root,k);
-    }
+        int element=0;
+        finder(root,k,element);
+        return element;
+        }
 };
