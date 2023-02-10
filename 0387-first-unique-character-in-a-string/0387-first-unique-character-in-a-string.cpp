@@ -1,10 +1,12 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        vector<int>vc(130,0);
-        for(auto c:s) vc[c]++;
+        vector<int>mp(130,0);
+        for(auto &c: s){
+            mp[c]++;
+        }
         for(int i=0;i<s.size();i++){
-            if(vc[s[i]]==1){
+            if(mp[s[i]]==1){
                 return i;
             }
         }
