@@ -1,8 +1,8 @@
 class Solution {
 public:
-    unordered_map<long long,int>mp;
+   unordered_map<long long,int>mp;
     void fun(long long n,vector<long long>&ans){
-        if(n>1e12) return;
+        if(n>3e9) return;
         if(mp.count(n)==0) ans.push_back(n);
         else return;
         mp[n]=1;
