@@ -16,7 +16,12 @@ public:
         
         for(int i=0;i<s.size();i++){
             if(s[i]==' ' && (div>0 || left>0)){
-                int sp = div + ((left--) > 0 ? 1:0);
+                int tmp=0;
+                if(left>0){
+                    tmp=1;
+                    left--;
+                }
+                int sp = div + tmp;
                 s.insert(i,sp,' ');
                 i+=sp;
             }
