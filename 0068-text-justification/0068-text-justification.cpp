@@ -34,7 +34,7 @@ public:
          string tmp = s[0];
         for (int i = 1; i < s.size(); i++)
         {
-            if (tmp.size() + s[i].size()+1 <=maxWidth)
+            if (tmp.size() + s[i].size() <maxWidth)
             {
                 tmp += (' '+s[i]);
             }
