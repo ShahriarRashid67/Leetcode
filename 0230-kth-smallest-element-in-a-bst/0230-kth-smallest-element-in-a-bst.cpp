@@ -15,7 +15,7 @@ public:
         if(root==NULL) return;
         finder(root->left,k,element);
         k--;
-        if(k==0) element=root->val;
+        if(k==0) {element=root->val;return;}
         finder(root->right,k,element);
         return;
     }
