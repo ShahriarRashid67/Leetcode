@@ -1,55 +1,41 @@
 class Solution {
 public:
-    void preprocess(string &s,int maxWidth,int last){
-        if(s.size()==maxWidth) return;
-        
-        int space=0;
-        for(auto c:s) {if(c==' ') space++;}
-        
-        int spneed=maxWidth-s.size();
-        if(space==0 || last==1){
-            s.insert(s.size(),spneed,' ');
-            return; 
+    void process(string &s,int maxW,int last){
+        if(s.size()==maxW) return;
+        int spaceNeed= maxW-s.size();
+        int word=0;
+        for(auto &c : s) if(c==' ') word++;
+        if(word==0 || last){
+            s.insert(s.size(),spaceNeed,' ');
+            return;
         }
-        int div=spneed/space;
-        int left=spneed%space;
+        int div=spaceNeed/word;
+        int left=spaceNeed%word;
         
         for(int i=0;i<s.size();i++){
-            if(s[i]==' ' && (div>0 || left>0)){
+            if(s[i]==' ' &&(div>0 || left>0)){
                 int tmp=0;
-                if(left>0){
-                    tmp=1;
-                    left--;
-                }
-                int sp = div + tmp;
+                if(left>0) tmp=1,left--;
+                int sp=div+tmp;
                 s.insert(i,sp,' ');
                 i+=sp;
             }
         }
-       // cout<<s<<" :";
     }
- 
-    vector<string> fullJustify(vector<string>& s, int maxWidth) {
+    vector<string> fullJustify(vector<string>& words, int maxWidth) {
         vector<string>vc;
-         string tmp = s[0];
-        for (int i = 1; i < s.size(); i++)
-        {
-            if (tmp.size() + s[i].size() <maxWidth)
-            {
-                tmp += (' '+s[i]);
-            }
-            else
-            {
+        string tmp=words[0];
+        for(int i=1;i<words.size();i++){
+            if(tmp.size()+words[i].size()<maxWidth){
+                tmp+=(' '+words[i]);
+            }else{
+                process(tmp,maxWidth,0);
                 vc.push_back(tmp);
-                tmp = s[i];
-            }
+                tmp=words[i];
+            }   
         }
-        preprocess(tmp,maxWidth,1);
+        process(tmp,maxWidth,1);
         vc.push_back(tmp);
-        for(auto &str:vc){
-            preprocess(str,maxWidth,0);
-           
-        }
         return vc;
     }
 };
