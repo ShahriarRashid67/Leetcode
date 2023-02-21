@@ -5,7 +5,7 @@ public:
         while(l<r){
             cout<<l<<" "<<r<<endl;
             int md=(l+r)/2;
-            if(md &&md<nums.size()&&(nums[md]!=nums[md-1]) && (nums[md]!=nums[md+1])){
+            if(md &&(nums[md]!=nums[md-1]) && (nums[md]!=nums[md+1])){
                 return nums[md];
             }
             int t=md%2;
